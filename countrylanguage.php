@@ -7,7 +7,7 @@ if(!$link){
     die("コネクションエラー");
 }
 //SQL文を生成
-$query = "SELECT ID , Name , CountryCode FROM city ORDER BY ID LIMIT 30";
+$query = "SELECT CountryCode ,Language FROM countrylanguage ORDER BY CountryCode LIMIT 30";
 //SQL文を実行
 $result = mysqli_query($link, $query);
 //DBコネクションを切断
@@ -29,16 +29,14 @@ mysqli_close($link);
   <body>
   <table class="table">
     <thead>
-          <th>ID</th>
-          <th>Name</th>
           <th>CountryCode</th>
+          <th>Language</th>
      </thead>
         <tbody>
          <?php while ($row = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <td><?php echo $row[ 'ID' ]; ?></td>
-                <td><?php echo $row[ 'Name']; ?></td>
                 <td><?php echo $row[ 'CountryCode' ]; ?></td>
+                <td><?php echo $row[ 'Language']; ?></td>
             </tr>
         <?php } ?>
          </tbody>
